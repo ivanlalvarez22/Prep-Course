@@ -1,0 +1,21 @@
+Una variable es un espacio de la memoria que se reserva con un nombre y se utiliza para guardar un valor. Podríamos ver a
+una variable como una caja con un nombre para poder identificarla y que puede contener algún tipo de dato.
+Ejemplo: let num = 12 crea un espacio en la memoria el cual se identifica con la clave num y se guarda allí el valor 12
+
+Los strings (cadenas) son un tipo de dato que consiste en un conjunto de letras o símbolos. El contenido del string va
+encerrado entre comillas dobles, simples o back ticks.
+Ejemplo: "Hola mundo!" Es un string osea una serie ordenada de caracteres (letras, símbolos).
+
+Las funciones son un bloque de código o subprogramas que pueden recibir un dato, procesarlo y devolvernos o no uno nuevo. 
+Básicamente podríamos ver las funciones como una máquina en la cual insertamos material (en este caso datos) y devolvernos
+un producto que es el resultado final de procesar ese material.
+Ejemplo: const sumar = (num1, num2) => num1 + num2 ésta función recibe dos numeros como argumento y nos devuelve la suma
+de los mismos. 
+Los argumentos son los valores que le mandamos a nuestra función (el material).
+La setencia return nos indica lo que debe devolver esa función.
+
+Una declaración if lo que hace es alterar el flujo de un programa. Nos sirve para tomar decisiones en base a ciertas
+condiciones. Si la condición se cumple iremos por un camino y sino iremos por otro.
+
+Un valor booleano simplemente lo que hace es representar un valor de verdad. Puede tener solo dos valores que son
+verdadero o falso.
