@@ -1,0 +1,8 @@
+Un arreglo es un dato estructurado que almacena un conjunto de datos del mismo tipo y que se diferencian por su índice. El primer índice de un arreglo es por lo general el 0. Utilizamos los indices para acceder a un elemento en concreto dentro de ese arreglo.
+Ejemplo: let numbers = [3, 4, 1, 2, 7];
+	 let words = ["Hola", "mundo", "como", "estan"];
+	 let booleans = [true, true, false, true, false];
+
+console.log(words[1]) // mundo
+console.log(numbers[3]) // 2
+console.log(numbers[5]) // undefined, el último elemento de un array es la cantidad de elementos - 1 porque se empieza a contar desde 0
