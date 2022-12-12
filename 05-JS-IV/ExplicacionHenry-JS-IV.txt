@@ -1,0 +1,108 @@
+// QUE ES UN OBJETO
+
+Un objeto en programación es lo mismo que un objeto en el mundo real, los objetos pueden ser cosas que se encuentran en el mundo real nada mas que se representan en un programa como un conjunto de características (propiedades o atributos) y funcionalidades (métodos o comportamiento). Por ejemplo una persona puede ser representada en programación como un objeto extrayendo sus rasgos, sus características comunes a todas las personas como el nombre, apellido, edad, sexo y también extrayendo sus comportamientos o métodos como caminar, comer, hablar, dormir etc. El hecho de formar una idea mental de un objeto extrayendo sus caracteristicas esenciales comunes a todos los objetos de ese tipo se conoce como abstracción, que es uno de los pilares de la programación orientada a objetos.
+
+
+// QUE SON LAS PROPIEDADES
+
+Las propiedades son como se mencionó anteriormente las características de un objeto que hacen que se distingan de otros. Por ejemplo el objeto auto tendría como características un motor, bocina, 4 ruedas, color, nro de patente etc.
+
+
+// QUE SON LOS METODOS
+
+Los métodos son las acciones que puede realizar ese objeto. Siguiendo el ejemplo del auto los métodos que se corresponden con el mismo podrían ser acelerar, tocar bocina, encender las luces, encender radio, frenar, etc
+
+
+// NOTACION PUNTO
+
+La notación de puntos se creó con el objetivo de facilitar el acceso a los atributos o métodos del objeto al proporcionar una sintaxis mas amigable por ejemplo tenemos el objeto auto y queremos acceder a su color lo hacemos con la siguiente notación: auto.color que debería devolvernos el color. Cada vez que agregamos un punto estamos accediendo al siguiente hijo del objeto como podría ser el ejemplo de un objeto persona con el atributo dirección que a su vez dirección está formado por calle y ciudad, entonces para acceder a los mismos haríamos persona.direccion.calle y persona.direccion.ciudad.
+
+// NOTACION CORCHETE
+
+La notación de corchetes se utiliza al igual que la notación de puntos para acceder a las propiedades y métodos del objeto pero con una sintaxis distina. Por ejemplo para acceder a la propiedad color del objeto auto pondríamos auto["color"] osea con el nombre de la propiedad dentro de corchetes y encerrado por comillas. La notación con corchetes, a diferencia de la notación con punto, puede usarse con variables. Si usas una variable con notación con corchetes, la variable debe hacer referencia a una string. Ejemplo:
+
+const gato = {
+	nombre: "Felix",
+	color: "Negro",
+	comidaFav: {
+        	carnes: ["pescado", "pollo"],
+        	alimentos: ["whiskas", "sabrositos"],
+    }
+}
+
+// ACCEDER A UN ATRIBUTO MEDIANTE UNA VARIABLE
+comida = "color";
+console.log(gato[color]); // Negro
+
+//ACCEDER A UN ATRIBUTO MEDIANTE UN STRING
+console.log(gato["nombre"]); // Felix 
+
+La diferencia de utilizar la notacion punto o notacion corchete depende de lo que necesitemos. Básicamente hay dos excepciones en las cuales deberíamos usar la notación corchete serían si quisieramos acceder a una propiedad de un objeto mediante una variable o si el nombre de una propiedad tiene caracteres especiales como por ejemplo su nombre empieza con un número. Ejemplo:
+
+const persona = {
+	nombre: "Juan",
+	2: "Pablo",
+};
+
+console.log(persona.nombre); // Juan
+console.log(persona.2); // Uncaught SyntaxError: Invalid or unexpected token
+console.log(persona["2"]); // Pablo
+
+//BUCLE FOR IN
+La instrucción for-in lo que hace es iterar una variable indicada sobre cada una de las propiedades de un objeto. Devolverá cada uno de los nombres de las propiedades del objeto. Si utilizamos un bucle for in en un arreglo lo que hace es devolvernos todos los índices del arreglo ya que un arreglo es un objeto, y el comportamiento de un bucle for in lo que hace es recorrer las claves del mismo.
+
+Ejemplo 1 con array (No recomendado en arrays, utilizar bucle for tradicional):
+
+let ingredientesParaTorta = ["leche", "harina", "huevos", "chocolate", "azucar"];
+for (let ingrediente in ingredientesParaTorta) {
+	console.log(ingrediente); // 0 1 2 3 4 (devuelve los índices de cada valor)
+}
+
+Ejemplo 2 (No recomendado en arrays, utilizar bucle for tradicional):
+
+
+let ingredientesParaTorta = ["leche", "harina", "huevos", "chocolate", "azucar"];
+for (let ingrediente in ingredientesParaTorta) {
+	console.log(ingredientesParaTorta[ingrediente]); // leche harina huevos chocolate azucar (devuelve los valores de cada indice)
+}
+
+Ejemplo 3 con objetos:
+
+const estudiante = {
+	nombre: "Iván",
+	apellido: "Alvarez",
+	edad: "28",
+	dni: 1234567,
+	celular: 155744878,
+	universidad: "UNSE",
+}
+
+for (let dato in estudiante) {
+	console.log(dato); // nombre apellido edad dni celular universidad (devuelve la clave de cada valor)
+}
+
+Ejemplo 4 con objetos:
+
+const estudiante = {
+	nombre: "Iván",
+	apellido: "Alvarez",
+	edad: "28",
+	dni: 1234567,
+	celular: 155744878,
+	universidad: "UNSE",
+}
+
+for (let dato in estudiante) {
+	console.log(estudiante[dato]); // Iván Alvarez 28 1234567 155744878 UNSE (devuelve el valor de cada clave)
+}
+
+
+// BUCLE FOR OF (No funciona en objetos)
+Es una instrucción que itera sobre un objeto devolviéndonos el valor de cada índice igual que el ejemplo 4 de for-in
+
+Ejemplo 1 con arreglos:
+
+let ingredientesParaTorta = ["leche", "harina", "huevos", "chocolate", "azucar"];
+for (let ingrediente of ingredientesParaTorta) {
+	console.log(ingrediente); // leche harina huevos chocolate azucar (devuelve los valores de cada índice)
+}
