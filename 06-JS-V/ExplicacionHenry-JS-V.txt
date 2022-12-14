@@ -1,0 +1,110 @@
+prototype es un mecanismo mediante el cual los objetos creados heredan características entre sí. Siempre que creamos un objeto, ese objeto vendrá por defecto con el objeto prototype que no es más que una referencia (la dirección a la que apunta) a un objeto padre en el cual contiene más funciones y de esta forma podremos heredarlas.
+Ejemplo: al crear un objeto perro
+const perro1 = {
+	nombre: "Dogui",
+	raza: "Pastor alemán",
+	ladrar() {
+		return "Guau guau!";
+	}
+}
+
+const perro2 = {
+    nombre: "Bobby",
+    __proto__: perro1, // Aquí es donde perro2 va a heredar todas las características de perro
+}
+
+//Funcionamiento de prototype
+
+console.log(perro2.nombre) // Bobby
+//Aquí vemos como el motor javascript buscara primero en el objeto perro2 la caracteristica nombre y al encontrarla devolvera el valor de la primera característica con la clave "nombre" que definimos en perro2 que es en este caso Bobby
+
+console.log(perro2.__proto__.nombre) // Dogui
+//Ahora vemos que el nombre es Dogui. Al acceder al prototype de perro2 quiere decir que estaríamos dentro del objeto perro1 ya que el prototype de perro2 lo definimos en perro1, por lo tanto su nombre será Dogui
+
+perro2.ladrar(); // Guau guau!
+//Podemos ver que aunque no definimos en perro2 el método ladrar, el objeto entiende el mensaje y ejecuta la instrucción definida en el método ladrar de perro1. Como dijimos anteriormente el motor de JS buscara el método ladrar en el objeto perro2, al no encontrarla ahí pasará a buscarla en su prototype el cual es perro1 y al existir ese método ahi dentro pues lo ejecutará.
+
+
+// ########################## DIFERENCIA ENTRE prototype y __proto__ ##########################
+
+prototype es una propiedad de un objeto Función. Es el prototipo de los objetos construidos por esa función.
+
+__proto__es una propiedad interna de un objeto, que apunta a su prototipo. Los estándares actuales proporcionan un método equivalente Object.getPrototypeOf(obj), aunque el estándar de facto __proto__es más rápido.
+
+Ejemplo:
+
+class Persona {
+    constructor(nombre, apellido, edad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+    }
+    saludar() {
+        return `Hola mi nombre es ${this.nombre} ${this.apellido} y tengo ${this.edad}`;
+    }
+}
+
+const ivan = new Persona("Iván", "Alvarez", 27);
+
+ivan.__proto__ // {constructor: ƒ, saludar: ƒ}
+
+ivan.prototype // undefined
+
+Persona.__proto__ // ƒ () { [native code] }
+
+Persona.prototype // {constructor: ƒ, saludar: ƒ}
+
+ivan.__proto__ === Persona.prototype // true
+
+//EN RESUMEN, utilizar prototype para una clase y __proto__ para un objeto
+
+// ########################## CONSTRUCTOR ################################
+Una clase constructora es una plantilla que utilizamos con el objetivo de crear objetos en base a un modelo predefinido y evitar la repetición de código innecesario
+Ejemplo:
+
+const Auto {
+	constructor(marca, color, modelo) {
+		this.marca = marca;
+		this.color = color;
+		this.modelo = modelo;
+	}
+	acelerar() {
+		return "acelerando..!";
+	}
+}
+
+// Ahora podemos utilizar la plantilla Auto para crear cualquier vehículo con esas caracteristicas
+// Crearemos 3 autos con solo 3 líneas de código y ahorraremos memoria ya que las funciones de acelerar están definidas en el constructor Auto y al crearse los objetos tendrán en su prototype esas funciones
+const auto1 = new Auto("Fiat", "Negro", 1994);
+const auto2 = new Auto("Renault", "Azul2, 2004);
+const auto3 = new Auto("Peugeot". "Gris", 2022);
+
+// Ahora crearemos 3 objetos sin utilizar una clase constructora
+const gato1 = {
+	nombre: "Tom",
+	edad: 3,
+	raza: Siamés,
+	maullar() {
+		return "Miau!";
+	},
+}
+
+const gato2 = {
+	nombre: "Felix",
+	edad: 5,
+	raza: Bengali,
+	maullar() {
+		return "Miau!";
+	},
+}
+
+const gato3 = {
+	nombre: "Garfield",
+	edad: 8,
+	raza: Persa,
+	maullar() {
+		return "Miau!";
+	},
+}
+
+// Como observamos usamos muchas más líneas de código y además tuvimos que definir 3 funciones lo cual es sínonimo de un mal gestionamiento de la memoria.
